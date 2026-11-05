@@ -1,6 +1,6 @@
 # Gendai client
 
-React + Vite frontend. See the [project README](../README.md) for setup, demo accounts and the full requirement checklist.
+React + Vite frontend. See the [project README](../README.md) for setup, demo accounts and the API reference.
 
 ```bash
 npm run dev      # http://localhost:5173
