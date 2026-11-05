@@ -1,0 +1,9 @@
+node_modules/
+dist/
+_backup_before_redesign/
+.vercel
+
+# Secrets: real environment files are never committed (the .env.example templates are)
+.env
+.env.*
+!.env.example

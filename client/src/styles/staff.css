@@ -1,0 +1,229 @@
+/* Kitchen board, front desk and tables (staff area). */
+
+.page-head-tools { display: flex; align-items: center; gap: 10px; }
+.live-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ok);
+}
+.live-dot::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); animation: pulse 1.4s ease-in-out infinite; }
+.sound-toggle.on { border-color: rgba(21, 128, 61, 0.35); }
+
+.nav-badge {
+  margin-left: auto;
+  min-width: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+}
+.nav-badge.is-alert { background: var(--brand); box-shadow: 0 0 12px var(--brand); animation: pulse 1.4s ease-in-out infinite; }
+.topbar-alert {
+  margin-left: auto;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  text-decoration: none;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.alert-warn { background: var(--warn-soft); color: var(--warn); border-left: 3px solid var(--warn); }
+
+/* ---------- Kitchen ---------- */
+.kitchen-board { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.kitchen-col-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.kitchen-col-title span {
+  min-width: 26px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  background: var(--ink);
+}
+.ticket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.kitchen-col:last-child .ticket-grid { grid-template-columns: 1fr; }
+.ticket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  animation: ticketIn 0.6s var(--ease-out) both;
+}
+@keyframes ticketIn { from { opacity: 0; transform: translateY(-12px) scale(0.97); } }
+.ticket::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--brand); }
+.ticket-takeout::before { background: var(--info); }
+.ticket-delivery::before { background: #0f766e; }
+.ticket.is-ready { opacity: 0.85; }
+.ticket.is-ready::before { background: var(--ok); }
+.ticket.is-late { box-shadow: 0 0 0 2px var(--warn), var(--shadow-soft); }
+.ticket-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 16px 16px 10px; }
+.ticket-kind { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.ticket-head h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin-top: 2px; }
+.ticket-time {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.ticket.is-late .ticket-time { background: var(--warn-soft); color: var(--warn); }
+.ticket-items { list-style: none; padding: 0 16px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
+.ticket-items strong { display: inline-block; min-width: 32px; color: var(--brand); font-family: var(--font-mono); }
+.ticket-notes {
+  margin: 12px 16px 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--warn);
+  background: var(--warn-soft);
+}
+.ticket-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; padding: 14px 16px 16px; }
+.ticket-no { font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+
+/* ---------- Front desk ---------- */
+.desk-section { margin-bottom: 28px; }
+.desk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.desk-alert,
+.desk-bill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  box-shadow: var(--shadow-soft);
+  animation: ticketIn 0.6s var(--ease-out) both;
+}
+.desk-alert.is-cash { border-color: rgba(21, 128, 61, 0.35); box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.08), var(--shadow-soft); }
+.desk-alert.is-online { border-color: rgba(192, 4, 44, 0.3); box-shadow: 0 0 0 3px rgba(192, 4, 44, 0.06), var(--shadow-soft); }
+.desk-alert::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand);
+  animation: ping 1.8s var(--ease-out) infinite;
+}
+.desk-alert-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-right: 18px; }
+.desk-bill .desk-alert-top { padding-right: 0; }
+.desk-method {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--ink);
+}
+.desk-method.m-cash { background: var(--ok); }
+.desk-method.m-gcash { background: #0a5bd3; }
+.desk-method.m-qrph { background: var(--brand); }
+.desk-method.m-bank_transfer { background: #0f766e; }
+.desk-alert h3,
+.desk-bill h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+.desk-amount { font-family: var(--font-mono); font-size: 26px; }
+.desk-instruction { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.desk-actions { display: flex; gap: 8px; margin-top: 4px; }
+.desk-actions .btn-primary { flex: 1; }
+.desk-bill { cursor: pointer; transition: transform 0.4s var(--ease-out), box-shadow 0.4s; }
+.desk-bill:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.desk-statuses { display: flex; flex-wrap: wrap; gap: 6px; }
+.data-table tr.is-cancelled td { text-decoration: line-through; color: var(--muted); }
+
+/* ---------- Tables & QR ---------- */
+.table-add { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 20px; max-width: 520px; }
+.table-add .form-field { flex: 1; }
+.qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.qr-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  box-shadow: var(--shadow-soft);
+  animation: ticketIn 0.6s var(--ease-out) both;
+}
+.qr-card.is-off { opacity: 0.55; }
+.qr-card-img { width: 110px; height: 110px; flex-shrink: 0; display: grid; place-items: center; border-radius: 12px; background: var(--bg); }
+.qr-card-img img { width: 100%; height: 100%; border-radius: 12px; }
+.qr-card-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.qr-card-body h3 { font-size: 20px; font-weight: 800; }
+.qr-link { font-family: var(--font-mono); font-size: 10px; color: var(--muted); word-break: break-all; text-decoration: none; }
+.qr-link:hover { color: var(--brand); }
+.qr-card .row-actions { justify-content: flex-start; }
+.qr-print-sheet { display: none; }
+
+/* ---------- Payment settings ---------- */
+.settings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: start; }
+.pay-setting { display: flex; flex-direction: column; gap: 12px; }
+.pay-setting-qr {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pay-setting-qr img,
+.pay-setting-qr .qr-empty {
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.pay-setting-qr .qr-empty { display: grid; place-items: center; font-size: 12px; color: var(--muted); text-align: center; padding: 10px; border-style: dashed; }
+.pay-setting-actions { display: flex; flex-direction: column; gap: 8px; }
+
+@media (max-width: 1000px) {
+  .kitchen-board { grid-template-columns: 1fr; }
+  .kitchen-col:last-child .ticket-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+}
+@media (max-width: 560px) {
+  .table-add { flex-direction: column; align-items: stretch; }
+  .qr-card { flex-direction: column; align-items: center; text-align: center; }
+  .qr-card .row-actions, .qr-card .check-row { justify-content: center; }
+}
+
+/* Order type pills on the orders list */
+.type-pill { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; white-space: nowrap; }
+.type-delivery { background: #ccfbf1; color: #0f766e; }
+.type-dine_in { background: var(--brand-soft); color: var(--brand); }
+.type-takeout { background: var(--info-soft); color: var(--info); }
+.pay-setting-actions label.btn { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--ink); text-align: center; }

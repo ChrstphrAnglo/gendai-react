@@ -1,0 +1,49 @@
+/* Print-friendly reports: hide navigation and controls, show the report header. */
+.print-header { display: none; }
+
+@media print {
+  @page { margin: 16mm; }
+
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  body { background: #fff !important; color: #000; font-size: 12pt; }
+  .admin-shell { background-image: none !important; }
+
+  .admin-sidebar, .admin-topbar, .sidebar-scrim, .no-print, .toolbar, .toast, .btn, .note { display: none !important; }
+
+  .admin-shell { display: block; background: #fff; }
+  .admin-content { padding: 0; max-width: none; }
+
+  .print-header { display: block; margin-bottom: 14pt; padding-bottom: 8pt; border-bottom: 2px solid #000; }
+  .print-header h1 { font-size: 18pt; }
+  .print-header h2 { font-size: 14pt; margin: 2pt 0 6pt; }
+  .print-header p { font-size: 10pt; color: #333; }
+
+  .card, .stat-card { border: 1px solid #999 !important; box-shadow: none !important; break-inside: avoid; }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 8pt; }
+  .stat-value { font-size: 16pt; }
+
+  /* Undo the mobile "stacked card" table layout so reports always print as real tables. */
+  .data-table thead { display: table-header-group !important; }
+  .data-table { display: table !important; width: 100% !important; }
+  .data-table tbody { display: table-row-group !important; }
+  .data-table tr { display: table-row !important; page-break-inside: avoid; padding: 0; }
+  .data-table td, .data-table th { display: table-cell !important; border: 1px solid #bbb; padding: 5pt 7pt; text-align: left; }
+  .data-table td.num, .data-table th.num { text-align: right; }
+  .data-table td::before { display: none !important; }
+  .data-table th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .report-total { border-top: 2px solid #000; font-weight: 700; }
+
+  /* Table QR code sheet (Tables & QR page): 2 × 3 cards per A4 page */
+  .qr-print-sheet { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10mm; }
+  .qr-print-card {
+    display: flex; flex-direction: column; align-items: center; gap: 4mm; padding: 8mm 6mm;
+    border: 1px dashed #999; border-radius: 6mm; break-inside: avoid; page-break-inside: avoid; text-align: center;
+  }
+  .qr-print-logo { width: 45mm; height: auto; }
+  .qr-print-code { width: 55mm; height: 55mm; }
+  .qr-print-table { font-size: 22pt; font-weight: 800; }
+  .qr-print-hint { font-size: 11pt; }
+  .qr-print-jp { font-family: "Shippori Mincho B1", serif; font-size: 11pt; color: #c0042c; letter-spacing: 0.3em; }
+  .qr-print-sheet ~ * { display: none !important; }
+}
