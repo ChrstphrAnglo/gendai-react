@@ -1,5 +1,7 @@
 # Gendai Ordering System
 
+[![CI](https://github.com/ChrstphrAnglo/gendai-react/actions/workflows/ci.yml/badge.svg)](https://github.com/ChrstphrAnglo/gendai-react/actions/workflows/ci.yml)
+
 A full-stack ordering system for a Japanese restaurant: guests order from their table by scanning a QR code, customers can order for delivery, and staff run the kitchen, front desk and back office from one admin area.
 
 ## Screenshots
