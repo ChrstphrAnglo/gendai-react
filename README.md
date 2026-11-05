@@ -6,13 +6,13 @@ A full-stack ordering system for a Japanese restaurant: guests order from their 
 
 ## Screenshots
 
-| Landing page | Table menu | Kitchen board |
+| Landing page | Log in | Sign up |
 | --- | --- | --- |
-| ![Landing page](docs/screenshots/landing.png) | ![Table menu](docs/screenshots/dine-menu.png) | ![Kitchen board](docs/screenshots/kitchen.png) |
+| ![Landing page](docs/screenshots/landing.jpg) | ![Log in](docs/screenshots/login.jpg) | ![Sign up](docs/screenshots/signup.jpg) |
 
-| Front desk | Admin dashboard | Sales report |
+| Menu | Kitchen board | Admin dashboard |
 | --- | --- | --- |
-| ![Front desk](docs/screenshots/front-desk.png) | ![Admin dashboard](docs/screenshots/dashboard.png) | ![Sales report](docs/screenshots/sales-report.png) |
+| ![Menu](docs/screenshots/menu.jpg) | ![Kitchen board](docs/screenshots/kitchen.jpg) | ![Admin dashboard](docs/screenshots/dashboard.jpg) |
 
 ## Features
 
