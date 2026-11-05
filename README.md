@@ -45,7 +45,6 @@ Security details: passwords are hashed with bcrypt, accounts lock for 15 minutes
 - **Client:** React 19, Vite, React Router, Axios
 - **Server:** Node.js, Express 5, Mongoose, JWT authentication, express-validator, multer
 - **Database:** MongoDB
-- **Hosting:** Vercel (React build plus the Express API as a serverless function), MongoDB Atlas, Vercel Blob for uploaded images
 - **Tests:** Node's built-in test runner
 
 ## User roles
@@ -63,7 +62,7 @@ Security details: passwords are hashed with bcrypt, accounts lock for 15 minutes
 gendai-react/
   client/    React app (Vite)                  http://localhost:5173
   server/    Express REST API and Mongoose     http://localhost:5001
-  api/       Vercel serverless entry that runs server/app.js
+  api/       Serverless entry that runs server/app.js
   database/  seed.js (sample data), seed-tables.js, migrate-delivery.js, schema.mongodb.js
   docs/      design notes and screenshots
 ```
@@ -96,7 +95,6 @@ cp server/.env.example server/.env
 | `JWT_SECRET` | Secret used to sign login tokens. Set it to a long random string. |
 | `JWT_EXPIRES_IN` | Token lifetime (default 8h) |
 | `CLIENT_URL` | Address of the client |
-| `BLOB_READ_WRITE_TOKEN` | Only needed on Vercel, for image uploads |
 
 `client/.env` is optional. Without it, the client calls `/api` and Vite proxies it to the server. See `client/.env.example` to point it elsewhere.
 
@@ -121,7 +119,7 @@ Open http://localhost:5173.
 
 ### Demo accounts
 
-Created by the seed script for local use only. Change these passwords before deploying anywhere public.
+Created by the seed script for local use only. They are sample data only.
 
 | Role | Email | Password |
 | --- | --- | --- |
@@ -140,18 +138,10 @@ npm test
 
 The tests use their own database (`gendai_test`) and need MongoDB running.
 
-## Deploying to Vercel
-
-1. Create a MongoDB Atlas cluster and database user, and allow access from anywhere (Vercel has no fixed IP).
-2. Load the sample data into Atlas: `MONGODB_URI="mongodb+srv://..." npm run seed`.
-3. Import the repository in Vercel, or run `vercel` from the project root. `vercel.json` sets the build and the `/api` routing.
-4. Add `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN` and a Vercel Blob store (which adds `BLOB_READ_WRITE_TOKEN`) as environment variables.
-5. Log in as admin, change the demo passwords, fill in **Settings → Payment accounts**, and print the table QR codes from **Tables & QR**.
-
 ## Notes
 
 - Payments go straight to the restaurant's own accounts. The app does not process money, and staff confirm each payment by hand.
-- Live screens refresh by polling every few seconds, so no websocket server is needed on Vercel.
+- Live screens refresh by polling every few seconds, so no websocket server is needed.
 - Forgot password is a placeholder page because email sending is not set up.
 
 ## Project background
